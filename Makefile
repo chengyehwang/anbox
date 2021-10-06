@@ -21,3 +21,4 @@ insert:
 	sudo modprobe ashmem_linux
 	sudo modprobe binder_linux
 
+
