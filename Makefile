@@ -2,12 +2,12 @@ linux_source:
 	wget https://github.com/microsoft/WSL2-Linux-Kernel/archive/refs/tags/linux-msft-wsl-5.10.60.1.tar.gz
 	tar zxvf linux-msft-wsl-5.10.60.1.tar.gz
 
-LINUX=linux-msft-wsl-5.10.60.1
+LINUX=WSL2-Linux-Kernel-linux-msft-wsl-5.10.60.1
 config:
 	cd ${LINUX} ; cp /proc/config.gz ./
 	cd ${LINUX} ; gzip -d config.gz
 	cd ${LINUX} ; mv config .config
-	sudo apt install bison flex elfutils-libelf-devel openssl-devel -y
+	sudo apt install build-essential checkinstall zlib1g-dev -y
 	make prepare
 	make modules_prepare
 	sudo ln ${PWD}/${LINUX} -s /lib/modules/${LINUX}/build
