@@ -7,9 +7,9 @@ config:
 	cd ${LINUX} ; cp /proc/config.gz ./
 	cd ${LINUX} ; gzip -d config.gz
 	cd ${LINUX} ; mv config .config
-	sudo apt install build-essential checkinstall zlib1g-dev -y
-	make prepare
-	make modules_prepare
+	sudo apt install build-essential checkinstall zlib1g-dev flex bison libssl-dev libelf-dev bc libncurses-dev -y
+	cd ${LINUX} ; make prepare
+	cd ${LINUX} ; make modules_prepare
 	sudo ln ${PWD}/${LINUX} -s /lib/modules/${LINUX}/build
 anbox:
 	git clone https://github.com/anbox/anbox-modules.git
